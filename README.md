@@ -29,23 +29,89 @@ Performance is evaluated using the **SIR epidemic spreading model**: top-ranked 
 ```
 .
 ├── notebooks/
-│   ├── ego_facebook_OMC.ipynb     # ego-Facebook network (STRONG community structure, mu ~ 0.075)
-│   ├── caltech_OMC.ipynb          # Caltech Facebook network (MEDIUM, mu ~ 0.27)
-│   └── netscience_OMC.ipynb       # Netscience co-authorship (STRONG, mu ~ 0.094)
+│   ├── omc_complete_replication.ipynb  # ⭐ Complete replication with LFR networks
+│   ├── ego_facebook_OMC.ipynb          # ego-Facebook (STRONG, μ ~ 0.075)
+│   ├── caltech_OMC.ipynb               # Caltech (MEDIUM, μ ~ 0.27)
+│   ├── netscience_OMC.ipynb            # Netscience (STRONG, μ ~ 0.094)
+│   └── extended.ipynb                  # ⭐ CA-GrQc extended dataset (5,242 nodes)
+├── figures/                            # ⭐ All generated plots stored here
 ├── data/
 │   ├── ego-facebook/
-│   │   └── facebook_combined.txt  # SNAP edge list (download separately)
+│   │   └── facebook_combined.txt
 │   ├── caltech/
-│   │   └── socfb-Caltech36.mtx    # Matrix Market format
-│   └── netscience/
-│       └── edges.csv              # Netzschleuder CSV format
+│   │   └── socfb-Caltech36.mtx
+│   ├── netscience/
+│   │   └── edges.csv
+│   └── extended/
+│       └── Extended_dataset.txt        # CA-GrQc collaboration network
 ├── docs/
-│   ├── README_egoFacebook_OMC.md  # Dataset + notebook details
-│   ├── README_Caltech_OMC.md
-│   └── README_Netscience_OMC.md
 └── paper/
-    └── paper.pdf                  # Stage 1 submission
+    └── paper.pdf
 ```
+
+---
+
+## Extended Replication Work
+
+This repository has been enhanced with comprehensive replication code for all experiments from Ghalmane et al. (2019):
+
+### Available Notebooks
+
+| Notebook | Description | Runtime |
+|----------|-------------|---------|
+| **`omc_complete_replication.ipynb`** | Complete replication with synthetic LFR networks (Figures 3-6) | ~30 min |
+| **`ego_facebook_OMC.ipynb`** | Enhanced ego-Facebook analysis with full visualizations | ~25 min |
+| **`caltech_OMC.ipynb`** | Caltech Facebook network analysis | ~10 min |
+| **`netscience_OMC.ipynb`** | Netscience co-authorship network analysis | ~10 min |
+| **`extended.ipynb`** | CA-GrQc collaboration network analysis (5,242 nodes) | ~50 min |
+
+### Key Enhancements
+
+- ✅ **LFR Network Generator** — Synthetic networks with controlled μ, oₙ, oₘ parameters
+- ✅ **Complete OMC Framework** — Local, Global, Modulus, and Weighted centrality
+- ✅ **SIR Simulation Engine** — Epidemic spreading evaluation with proper averaging
+- ✅ **30+ Visualizations** — Network samples, degree distributions, community analysis, centrality distributions, OMC performance plots
+- ✅ **Replicated Figures** — Figures 3-6 (synthetic) and Figures 16-17 (real-world)
+
+### Quick Start
+
+```bash
+cd notebooks
+
+# Main replication (synthetic LFR experiments)
+jupyter lab omc_complete_replication.ipynb
+
+# Real-world datasets
+jupyter lab ego_facebook_OMC.ipynb
+jupyter lab caltech_OMC.ipynb
+jupyter lab netscience_OMC.ipynb
+jupyter lab extended.ipynb
+```
+
+---
+
+## Generated Figures
+
+All figures are automatically saved to the **`figures/`** directory:
+
+### Synthetic Experiments (from `omc_complete_replication.ipynb`)
+| Figure | Description |
+|--------|-------------|
+| `figure3_community_strength.png` | Community strength effect (μ = 0.1, 0.4, 0.6) |
+| `figure4_local.png` | Local centrality vs overlapping nodes |
+| `figure5_global.png` | Global centrality vs overlapping nodes |
+| `figure6_modulus.png` | Modulus vs overlapping nodes |
+| `figure16_17_realworld.png` | Real-world network comparisons |
+
+### Real-World Datasets (from individual notebooks)
+| Network | Figures Generated |
+|---------|-------------------|
+| ego-Facebook | `facebook_network_sample.png`, `facebook_degree_distribution.png`, `facebook_community_analysis.png`, `facebook_centrality_distribution.png`, `facebook_omc_results.png` |
+| Caltech | `caltech_network_sample.png`, `caltech_degree_distribution.png`, `caltech_community_analysis.png`, `caltech_centrality_distribution.png`, `caltech_omc_results.png` |
+| Netscience | `netscience_network_full.png`, `netscience_degree_distribution.png`, `netscience_community_analysis.png`, `netscience_centrality_distribution.png`, `netscience_omc_results.png` |
+| CA-GrQc (extended) | `extended_network_sample.png`, `extended_degree_distribution.png`, `extended_community_analysis.png`, `extended_centrality_distribution.png`, `extended_omc_results.png` |
+
+**Total: 30+ figures** covering network structure, community analysis, centrality measures, and OMC performance evaluation.
 
 ---
 
